@@ -1,0 +1,125 @@
+<!--The content below is only a placeholder and can be replaced.
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+    <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Home</a></li>
+        <li class="nav-item"><a routerLink="/accounts" class="nav-link">Accounts</a></li>
+        <li class="nav-item"><a routerLink="/contacts" class="nav-link">Contacts</a></li>
+        <li class="nav-item"><a routerLink="/loanapplications" class="nav-link">Requests</a></li>
+        <li class="nav-item"><a routerLink="/scripts" class="nav-link">Scripts</a></li>
+        <li class="nav-item active"><a routerLink="/communicates" class="nav-link">Communicate</a></li>
+        <li class="nav-item cta"><a class="nav-link logout" (click)="logout($event)">
+            <span class="icon-sign-out"></span>Log Out</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Welcome {{loggedinUser | titlecase}}
+      </span>
+    </div>
+</nav>
+<!-- END nav -->
+<app-header></app-header>
+<div class="main-panel">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/communicates">Communicates</a></li>
+      <li class="breadcrumb-item active">New</li>
+    </ol>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="bootstrap-iso">
+        <div class="stepFormCont">
+          <div class="sf_header">
+            <ul id="progressbar">
+              <li [ngClass]="{'active': currentPage >= 1}">Select Contact</li>
+              <li [ngClass]="{'active': currentPage >= 2}">Enter Message</li>
+              <li [ngClass]="{'active': currentPage >= 3}">Status</li>
+            </ul>
+          </div>
+          <div class="sf_body" [ngClass]="{'current_active': currentPage == 1}">
+            <div class="sf_body_top">
+                <table #contact_table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                    <thead>
+                      <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Registered Mobile Number</th>
+                        <th>Date Of Birth</th>
+                        <th>Email</th>
+                        <th>Id Number</th>
+                        <th>Due Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let contact of contacts">
+                        <td><input type='checkbox' value='{{contact.contactid}}' (click)="selectContact($event, contact)" /></td>
+                        <td>{{contact["Name"]}}</td>
+                        <td>{{contact["Registered Mobile Number"]}}</td>
+                        <td>{{contact["Date Of Birth"]}}</td>
+                        <td>{{contact["Email"]}}</td>
+                        <td>{{contact["fssainumber"]}}</td>
+                        <td>{{contact["duedate"] | date:"yyyy-MM-dd" }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div style="padding-top:15px; text-align: right;">
+              <button class="btn btn-primary sf-next" [ngClass]="{'disabled': selectedContacts.length === 0}" [disabled]="selectedContacts.length === 0" (click)="moveNext(2)">Next <span class="icon-navigate_next"></span></button>
+            </div>
+          </div>
+          <div class="sf_body" [ngClass]="{'current_active': currentPage == 2}">
+            <form id="uploadForm" enctype="multipart/form-data" method="post">
+            <div class="bootstrap-iso sf_body_top">
+              <div class="col-md-6">               
+                  <div class="form-group">
+                    <label for="inputState">Choose from existing Script</label>
+                    <select class="form-control" [(ngModel)]="fData.selectedProcess" name="process" (change)="onProcessChange()">
+                      <option value="">Select Script</option>
+                      <option *ngFor="let process of processes" value="{{process.processid}}">{{process.description}}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="customMessage">Enter Message</label>
+                    <textarea class="form-control" [(ngModel)]="fData.messageText" id="customMessage" name="messageText" rows="3" maxlength="1000" [readonly]="fData.selectedProcess !== ''"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="attachmentInput">Select Attachment</label>
+                    <input type="file" class="form-control-file" name="attachment" id="attachmentInput">
+                  </div>
+                
+              </div>
+            </div>
+            <div style="padding: 0 15px; text-align: right;">
+              <button class="btn btn-primary sf-previous" (click)="moveBack(1)" style="margin-right:10px;"><span
+                  class="icon-navigate_before"></span> Previous</button>
+              <button class="btn btn-primary sf-send" [ngClass]="{'disabled': (fData.messageText.trim() === '')}" [disabled]="(fData.messageText.trim() === '')" (click)="sendMessage($event)">Send <span class="icon-send2"></span></button>
+            </div>
+          </form>
+          </div>
+          <div class="sf_body" [ngClass]="{'current_active': currentPage == 3}">
+            <div style="min-height: 317px;padding: 0 10%;padding-top: 20px;">
+              <div class="alert alert-success" *ngIf="isMessageSent" role="alert">
+                Your message has been successfully sent. <b>Wait!</b> You will be redirecting to Communicate page in
+                <b>{{timeinsec}}</b> seconds.
+              </div>
+              <div class="alert alert-danger" *ngIf="isErrorInMessageSent" role="alert">
+                {{errorInMessageSent}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

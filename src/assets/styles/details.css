@@ -1,0 +1,14 @@
+To generate token - 
+URL - https://login.salesforce.com/services/oauth2/token
+
+grant_type:password
+username:digital@lending.com
+password:Excellon@456
+client_id:3MVG9YDQS5WtC11pUb9NxyfyezegiEWQpjqwPX_cScKP3kUs_3yrEP_uPMkqfGKCTqqJzbVDv3cAR5IDIEV0H
+client_secret:74D1AB9A039A1D9319B6A8B06F5FA4AF587EBFE7DDF1911193B7D7552C3AABDE
+
+To POST Data - 
+URL - https://digitallending-dev-ed.my.salesforce.com/services/apexrest/Lead/
+
+Content-Type:application/json
+Authorization:Bearer 00D6F000002SATf!ARAAQNUGhC6l2Hw8BHz1mZbxDnud8zo5dUHNU3Dl6YYAGCdeNLRJqOSOFnbFTs0pJSZX8mfX16ho2nia..1LlPbVzAg8QX2l

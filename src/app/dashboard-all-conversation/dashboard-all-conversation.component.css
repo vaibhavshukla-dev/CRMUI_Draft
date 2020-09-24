@@ -1,0 +1,70 @@
+
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #f6f6f6;
+    border-radius: 0;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+}
+
+.card .head{
+    font-size: 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.card .body{
+    display: flex;
+    justify-content: space-between;
+    overflow-x: auto;
+}
+
+.card .body .data .head{
+    font-size: 15px;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.card .body .data .value{
+    color: #495057;
+    font-weight: 600;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.card .body .avatar{
+   position: relative;
+}
+.card .body .avatar::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 60px;
+    background-color: hsla(0,0%,100%,.2);
+    left: 16px;
+    transform: rotate(32deg);
+    top: -5px;
+    transition: all .4s;
+}
+.card .body .avatar .avatar-title{
+    align-items: center;
+    background-color: #556ee6;
+    color: #fff;
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+.card .foot a{
+    display: flex;
+    font-size: 14px;
+    color: #556ee6;
+}

@@ -1,0 +1,82 @@
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .right .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+    height: 100%;
+    padding: 0 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .right .box .logo {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 60px;
+  }
+  .right .box .head-text {
+    margin-bottom: 20px;
+  }
+  .right .box .head-text h5 {
+    color: #fff;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: bold;
+  }
+   .right .box .head-text h6 {
+    color: #fff;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: bold;
+  }
+   .right .box .form-ele {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+   .right .box .form-ele label {
+    color: #fff;
+    opacity: 0.7;
+    font-weight: normal;
+    font-size: 13px;
+  }
+   .right .box .form-ele input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 472px;
+    border: none !important;
+    outline: none !important;
+  }
+   .right .box .btn-login {
+    background: #0466c8;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    max-width: 472px;
+    margin-top: 10px;
+  }
+   .right .box .link {
+    color: #fff;
+    opacity: 0.5;
+    text-decoration: none !important;
+  }
+   .right .box .link:hover {
+    opacity: 1;
+  }
+   .right .box .error {
+    margin-top: 20px;
+    color: red;
+  }
+  
+  @media screen and (max-width: 1200px) {
+     .left {
+      display: none;
+    }
+  }

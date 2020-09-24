@@ -1,0 +1,156 @@
+.login-container {
+    background: #001233;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
+  .login-container .left {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    height: 100%;
+    justify-content: center;
+    padding: 0 40px;
+    background-image: url("../../assets/images/ng-crm.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .login-container .left .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: #001233;
+    opacity: 0.8;
+    z-index: 0;
+  }
+  .login-container .left h1 {
+    color: #fff;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 10px;
+    z-index: 1;
+  }
+  .login-container .left h3 {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    z-index: 1;
+  }
+  .login-container .left .news {
+    width: 100%;
+    z-index: 1;
+    margin-top: 50px;
+  }
+  .login-container .left .news .head {
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  .login-container .left .news .list {
+    display: flex;
+  }
+  .login-container .left .news .list .item {
+    margin-right: 30px;
+  }
+  .login-container .left .news .list .item .date {
+    color: #fff;
+    opacity: 0.7;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  .login-container .left .news .list .item .title {
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  .login-container .left .news .list .item .desc {
+    color: #fff;
+    font-size: 14px;
+  }
+  .login-container .right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .login-container .right .box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px;
+    height: 100%;
+    padding: 0 40px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .login-container .right .box .logo {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 60px;
+  }
+  .login-container .right .box .head-text {
+    margin-bottom: 20px;
+  }
+  .login-container .right .box .head-text h5 {
+    color: #fff;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .login-container .right .box .head-text h6 {
+    color: #fff;
+    opacity: 0.9;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .login-container .right .box .form-ele {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  .login-container .right .box .form-ele label {
+    color: #fff;
+    opacity: 0.7;
+    font-weight: normal;
+    font-size: 13px;
+  }
+  .login-container .right .box .form-ele input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    max-width: 472px;
+    border: none !important;
+    outline: none !important;
+  }
+  .login-container .right .box .btn-login {
+    background: #0466c8;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+    max-width: 472px;
+    margin-top: 10px;
+  }
+  .login-container .right .box .link {
+    color: #fff;
+    opacity: 0.5;
+    text-decoration: none !important;
+  }
+  .login-container .right .box .link:hover {
+    opacity: 1;
+  }
+  .login-container .right .box .error {
+    margin-top: 20px;
+    color: red;
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .login-container .left {
+      display: none;
+    }
+  }

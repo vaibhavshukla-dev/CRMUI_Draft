@@ -1,0 +1,49 @@
+<!--The content below is only a placeholder and can be replaced.
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+
+    <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Home</a></li>
+        <li class="nav-item"><a routerLink="/accounts" class="nav-link">Accounts</a></li>
+        <li class="nav-item"><a routerLink="/contacts" class="nav-link">Contacts</a></li>
+        <li class="nav-item"><a routerLink="/loanapplications" class="nav-link">Requests</a></li>
+        <li class="nav-item active"><a routerLink="/scripts" class="nav-link">Scripts</a></li>
+        <li class="nav-item"><a routerLink="/communicates" class="nav-link">Communicate</a></li> 
+        <li class="nav-item cta"><a class="nav-link logout" (click)="logout($event)">
+          <span class="icon-sign-out"></span>Log Out</a>
+        </li>      
+      </ul>
+      <span class="navbar-text">
+        Welcome {{loggedinUser | titlecase}}
+      </span>
+    </div>
+
+</nav>
+<!-- END nav -->
+<app-header></app-header>
+<div class="main-panel">
+  <div class="col-md-12">
+    <div class="card">
+      <table #scriptTable class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+        <thead>
+          <tr>
+            <th>Script Configured For</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let script of scripts">
+            <td><a routerLink='/script/{{script.processid}}/{{script.description}}'>{{script["description"]}}</a></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>            
+  </div>
+</div>  

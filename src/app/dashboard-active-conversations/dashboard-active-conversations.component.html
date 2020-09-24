@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="head">
+  </div>
+  <div class="body">
+    <div class="data">
+      <div class="head">
+        All Contacts
+      </div>
+      <div class="value">
+        {{timeLeft}}
+      </div>
+    </div>
+    <div class="avatar">
+      <div class="avatar-title">
+        <span class="material-icons">
+          mark_chat_unread
+          </span>
+      </div>
+    </div>
+  </div>
+  <div class="foot">
+    <a routerLink="/dashboard/currentActiveContacts"
+                  [ngClass]="{'disabled':single == 0, 'card-link': true}">View Details</a>
+  </div>
+</div>

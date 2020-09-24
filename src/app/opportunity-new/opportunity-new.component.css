@@ -1,0 +1,79 @@
+div.card {
+    background: transparent;
+}
+.stepFormCont{
+	width: 100%;
+	margin: 0px auto;
+}
+.stepFormCont .sf_header{
+	background: rgba(203, 203, 210, 0.15);
+    padding: 15px 0;
+	border-bottom: 1px solid grey;
+}
+.stepFormCont .sf_body .sf_body_top{
+	min-height: 275px;
+}	
+.stepFormCont .sf_body{	
+	padding-top: 15px;
+	display:none;
+}
+.stepFormCont .sf_body.current_active{
+	display:block;
+}
+/*progressbar*/
+#progressbar {
+	margin: 0px;
+	overflow: hidden;
+	counter-reset: step;
+	padding: 0px;
+}
+#progressbar li {
+	list-style-type: none;
+	text-transform: uppercase;
+	color: #000000;
+    font-weight: bold;
+	font-size: 12px;
+	float: left;
+	position: relative;
+    text-align:center;
+    width: 33.33%;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 40px;
+	line-height: 40px;
+	display: block;
+	font-size: 14px;
+	color: #333;
+	background: #cdcdcd;
+	border-radius: 20px;
+	margin: 0 auto 5px auto;
+	text-align: center;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: #cdcdcd;
+	position: absolute;
+	left: -50%;
+	top: 20px;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before,  #progressbar li.active:after{
+	background: #109fd1;
+	color: white;
+}
+.error{
+	color: red;
+	font-size: 13px;
+	margin-top: 2px;
+}

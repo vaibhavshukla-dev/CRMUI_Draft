@@ -1,0 +1,62 @@
+<!--The content below is only a placeholder and can be replaced.
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+
+    <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Home</a></li>
+        <li class="nav-item"><a routerLink="/accounts" class="nav-link">Accounts</a></li>
+        <li class="nav-item active"><a routerLink="/contacts" class="nav-link">Contacts</a></li>
+        <li class="nav-item"><a routerLink="/loanapplications" class="nav-link">Requests</a></li>
+        <li class="nav-item"><a routerLink="/scripts" class="nav-link">Scripts</a></li>
+        <li class="nav-item"><a routerLink="/communicates" class="nav-link">Communicate</a></li>
+        <li class="nav-item cta"><a class="nav-link logout" (click)="logout($event)">
+            <span class="icon-sign-out"></span>Log Out</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Welcome {{loggedinUser | titlecase}}
+      </span>
+    </div>
+
+</nav>
+<!-- END nav -->
+<app-header></app-header>
+<div class="main-panel">  
+  <div class="col-lg-12">
+    <div class="card">
+      <div class="top-btn-cont">
+        <a routerLink="/newcontact" class="btn btn-primary">NEW</a>
+      </div>     
+      <table #contact_table class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+        <thead>
+          <tr>
+            <th>Contact Id</th>
+            <th>Name</th>
+            <th>Registered Mobile Number</th>
+            <th>Date Of Birth</th>
+            <th>Email</th>
+            <th>Id Number</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let contact of contacts">
+            <td><a routerLink='/contact/{{contact.contactid}}'>{{contact["contactid"]}}</a></td>
+            <td>{{contact["Name"]}}</td>
+            <td>{{contact["Registered Mobile Number"]}}</td>
+            <td>{{contact["Date Of Birth"]}}</td>
+            <td>{{contact["Email"]}}</td>
+            <td>{{contact["fssainumber"]}}</td>
+            <td>{{contact["duedate"] | date:"yyyy-MM-dd" }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+.statistics div[class*='col-'] .card {
+    min-height: 300px;
+    line-height: 1.8;
+    padding: 0px;
+}
+
+.statistics div[class*='col-'] .card .card-header{
+    background-color: #109fd1;
+    color: #fff;
+}
+
+.statistics h2 {
+    margin-bottom: 20px
+}
+
+.statistics .income .number {
+    font-size: 7em;
+    color: #555;
+    line-height: 181px;
+}
+
+.statistics .income strong {
+    font-size: 1.2em
+}
+
+.card.income li {
+    width: 4em;
+    height: 4em;
+    text-align: center;
+    line-height: 4em;
+    border-radius: 2em;
+    background: dodgerblue;
+    margin: 0 2.7em;
+    display: inline-block;
+    color: white;
+    position: relative;
+}
+
+.card.income ul{
+    padding-left: 0px;
+}
+  
+.card.income li::before{
+    content: '';
+    position: absolute;
+    top: 1.6em;
+    left: -5.7em;
+    width: 5.8em;
+    height: .8em;
+    background: dodgerblue;
+    z-index: 0;
+}
+  
+.card.income li:first-child::before {
+    display: none;
+}
+
+.card.income li a{
+    color: #fff !important;
+}
+
+@media (max-width: 991px) {
+    .statistics div[class*='col-'] .card {
+        height:auto;
+        margin-bottom: 20px
+    }
+    
+    .statistics .data-usage {
+        text-align: center
+    }
+}
+
+@media (min-width: 768px) {
+    .statistics h2 {
+        font-size:1.3rem
+    }
+}
+
+
+.view-details{
+    position: absolute;
+    right: 30px;
+    bottom: 20px;
+    z-index: 1;
+}
+
+/* New Theme */
+.topbar{
+    background-color: #2a3042;
+    padding: 14px 0;
+    
+}
+.logo{
+    display: flex;
+    align-items: center;
+}
+.logo button span{
+    color: #e9ecef;
+}
+.logo a{
+    color: #e9ecef;
+    font-size: 19px;
+    padding: 0 10px;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 1px;
+}
+.actions{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.item{
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    color: #e9ecef;
+    cursor: pointer;
+    position: relative;
+}
+
+.item a{
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+.item span{
+    margin-right: 5px;
+    border-radius: 50%;
+    font-size: 15px;
+}
+.item  label{
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+.item .badge{
+    position: absolute;
+    top: -10px;
+    background: red;
+    display: flex;
+    align-items: center;
+    padding: 5px 5px 8px 5px;
+    font-size: 12px;
+    height: 18px;
+    left: 4px;
+}
+
+.navbar{
+    background: #fff;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+}
+
+.navbar-nav .nav-item a{
+    font-size: 14px;
+    position: relative;
+    padding: 10px 20px;
+    color: #545a6d;
+    display: flex;
+    align-items: center;
+}
+.navbar-nav .nav-item a:hover{
+    color: #556ee6;
+}
+.navbar-nav .nav-item.active a{
+    color: #556ee6;
+}
+
+.navbar-nav .nav-item a span{
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+
+
+/* dashboard */
+.dashboard{
+    padding: 20px;
+    padding-bottom: 20px;
+    background-color: #f8f8fb;
+}
+.card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #f6f6f6;
+    border-radius: 0;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+}
+
+.card .body{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card .body .data .head{
+    color: #74788d!important;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.card .body .data .value{
+    color: #495057;
+    font-weight: 600;
+    font-size: 20px;
+}
+.card .body .avatar{
+   position: relative;
+}
+.card .body .avatar::before{
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 60px;
+    background-color: hsla(0,0%,100%,.2);
+    left: 16px;
+    transform: rotate(32deg);
+    top: -5px;
+    transition: all .4s;
+}
+.card .body .avatar .avatar-title{
+    align-items: center;
+    background-color: #556ee6;
+    color: #fff;
+    display: flex;
+    font-weight: 500;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+@media (max-width: 576px) {
+
+    .logo a{
+        font-size: 14px;
+    }
+    .item  label{
+        display: none;
+    }
+    .item span{
+        margin-right: 5px;
+        border-radius: 50%;
+        font-size: 18px;
+    }
+    .navbar-nav .nav-item a{
+    
+        padding: 10px 14px;
+    }
+}

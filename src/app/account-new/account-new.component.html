@@ -1,0 +1,69 @@
+<!--The content below is only a placeholder and can be replaced.
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+  
+    <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Home</a></li>
+        <li class="nav-item active"><a routerLink="/accounts" class="nav-link">Accounts</a></li>
+        <li class="nav-item"><a routerLink="/contacts" class="nav-link">Contacts</a></li>
+        <li class="nav-item"><a routerLink="/loanapplications" class="nav-link">Requests</a></li>
+        <li class="nav-item"><a routerLink="/scripts" class="nav-link">Scripts</a></li>
+        <li class="nav-item"><a routerLink="/communicates" class="nav-link">Communicate</a></li>        
+        <li class="nav-item cta"><a class="nav-link logout" (click)="logout($event)">
+          <span class="icon-sign-out"></span>Log Out</a>
+        </li>      
+      </ul>
+      <span class="navbar-text">
+        Welcome {{loggedinUser | titlecase}}
+      </span>
+    </div>
+
+</nav>
+<!-- END nav -->
+<app-header></app-header>
+<div class="main-panel">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/accounts">Accounts</a></li>
+      <li class="breadcrumb-item active">New</li>
+    </ol>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="bootstrap-iso">
+        <form id="newAccount" [formGroup]="accountForm" novalidate>
+            <div class="row">
+              <div class="alert alert-success" role="alert" *ngIf="isDataSaved">
+                Account has been successfully created. <b>Wait!</b> You will be redirecting to Account page in <b>{{timeinsec}}</b> seconds.
+              </div>
+              <div class="col-md-6">                
+                <div class="form-group">
+                  <label for="accountName">Name</label>
+                  <input type="text" class="form-control" id="accountName" formControlName="accountName" placeholder="Enter account name">		
+                  <div *ngIf="accountForm.controls['accountName'].invalid && (accountForm.controls['accountName'].dirty || accountForm.controls['accountName'].touched || isSubmitted)">
+                      <div *ngIf="accountForm.controls['accountName'].errors.required" class="error">
+                        Account name is required.
+                      </div>
+                  </div>						
+                </div>
+                <div class="form-group">
+                  <label for="accountDescription">Description (Optional)</label>
+                  <textarea type="text" class="form-control" id="accountDescription" formControlName="accountDescription" rows="3" maxlength="1000" placeholder="Enter description"></textarea>
+                </div>                
+              </div>
+            </div>
+        </form>
+      </div>
+      <div style="text-align: right;">
+        <button class="btn btn-primary" id="saveAccount" (click)="saveAccount($event)">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

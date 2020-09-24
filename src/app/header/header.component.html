@@ -1,0 +1,72 @@
+<div class="topbar">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 col-sm-3 logo">
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#ftco-nav"
+          aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icon-menu"></span>
+        </button>
+        <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+      </div>
+      <div class="col actions">
+        <div class="item">
+          <span class="material-icons">
+            person
+          </span>
+          <label>
+            Welcome {{loggedinUser | titlecase}}
+          </label>
+        </div>
+        <!-- <div class="item">
+          <span class="material-icons">
+            notification_important
+          </span>
+          <label>
+            Something New !
+          </label>
+          <span class="badge">3</span>
+        </div> -->
+        <div class="item">
+          <a class="nav-link logout" (click)="logout($event)">
+            <span class="material-icons">
+              power_settings_new
+            </span>
+            <label>
+              Log Out
+            </label>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END nav -->
+<!--The content below is only a placeholder and can be replaced.-->
+<nav class="navbar navbar-expand-lg" id="ftco-navbar">
+  <!--div class="container"-->
+  <div class="collapse navbar-collapse" id="ftco-nav">
+    <ul class="navbar-nav">
+      <li class="nav-item active"><a class="nav-link" routerLink="/dashboard"><span class="material-icons">
+            dashboard
+          </span>Home</a></li>
+      <li class="nav-item"><a routerLink="/accounts" class="nav-link"><span class="material-icons">
+        receipt
+        </span>Accounts</a></li>
+      <li class="nav-item"><a routerLink="/contacts" class="nav-link"><span class="material-icons">
+        contacts
+        </span>Contacts</a></li>
+      <li class="nav-item"><a routerLink="/loanapplications" class="nav-link"><span class="material-icons">
+        move_to_inbox
+        </span>Requests</a></li>
+      <li class="nav-item"><a routerLink="/scripts" class="nav-link"><span class="material-icons">
+        wysiwyg
+        </span>Scripts</a></li>
+      <li class="nav-item"><a routerLink="/communicates" class="nav-link"><span class="material-icons">
+        textsms
+        </span>Communicate</a></li>
+    </ul>
+  </div>
+  <!--/div -->
+</nav>
+<!-- END nav -->

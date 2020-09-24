@@ -1,0 +1,163 @@
+<!--The content below is only a placeholder and can be replaced.
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+
+    <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Home</a></li>
+        <li class="nav-item"><a routerLink="/accounts" class="nav-link">Accounts</a></li>
+        <li class="nav-item active"><a routerLink="/contacts" class="nav-link">Contacts</a></li>
+        <li class="nav-item"><a routerLink="/loanapplications" class="nav-link">Requests</a></li>
+        <li class="nav-item"><a routerLink="/scripts" class="nav-link">Scripts</a></li>
+        <li class="nav-item"><a routerLink="/communicates" class="nav-link">Communicate</a></li>
+        <li class="nav-item cta"><a class="nav-link logout" (click)="logout($event)">
+            <span class="icon-sign-out"></span>Log Out</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Welcome {{loggedinUser | titlecase}}
+      </span>
+    </div>
+
+</nav>
+<!-- END nav -->
+<app-header></app-header>
+<div class="main-panel">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/contacts">Contacts</a></li>
+      <li class="breadcrumb-item active">New</li>
+    </ol>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="bootstrap-iso">
+        <form id="newContact" [formGroup]="contactForm" novalidate>
+          <div class="stepFormCont">
+            <div class="sf_header">
+              <ul id="progressbar" #progressBar>
+                <li [ngClass]="{'active': currentPage >= 1}">Contact Details</li>
+                <li [ngClass]="{'active': currentPage >= 2}">Other Details</li>
+              </ul>
+            </div>
+            <div class="sf_body" [ngClass]="{'current_active': currentPage==1}">
+              <div class="row sf_body_top">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="account">Select Account</label>
+                    <select class="form-control" id="account" formControlName="account" name="account">
+                      <option value="">--Select Account--</option>
+                      <option *ngFor="let account of accounts" [value]="account.accountid">{{account.name}}</option>
+                    </select>
+                    <div *ngIf="contactForm.controls['account'].invalid && (contactForm.controls['account'].dirty || contactForm.controls['account'].touched || submitted)">
+                        <div *ngIf="contactForm.controls['account'].errors.required" class="error">
+                          Account is required.
+                        </div>
+                    </div>
+                  </div>                  
+                  <div class="form-group">
+                    <label for="dob">Date Of Birth</label>
+                    <input type="date" class="form-control" id="dob" name="dob" formControlName="dob" placeholder="Enter Date of Birth" />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" formControlName="email" placeholder="Enter Email Address" />
+                    <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched || submitted)">
+                        <div *ngIf="contactForm.controls['email'].errors.required" class="error">
+                          Email is required.
+                        </div>
+                        <div *ngIf="contactForm.controls['email'].errors.pattern" class="error">
+                            Enter valid Email address.
+                          </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" formControlName="name" placeholder="Enter name" />
+                    <div *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched || submitted)">
+                        <div *ngIf="contactForm.controls['name'].errors.required" class="error">
+                          Name is required.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="mobilenum">Mobile Number(+91XXXXXXXXXX)</label>
+                    <input type="text" class="form-control" id="mobilenum" formControlName="mobilenum" name="mobilenum"
+                      placeholder="Enter Mobile Number" />
+                    <div *ngIf="contactForm.controls['mobilenum'].invalid && (contactForm.controls['mobilenum'].dirty || contactForm.controls['mobilenum'].touched || submitted)">
+                        <div *ngIf="contactForm.controls['mobilenum'].errors.required" class="error">
+                          Mobile number is required.
+                        </div>
+                        <div *ngIf="contactForm.controls['mobilenum'].errors.pattern" class="error">
+                            Enter valid Mobile number.
+                          </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <button class="btn btn-primary sf-previous" style="display:none;">Previous</button>
+                <button class="btn btn-primary sf-next" (click)="moveNext(2)">Next <span class="icon-navigate_next"></span></button>
+              </div>
+            </div>
+            <div class="sf_body" [ngClass]="{'current_active': currentPage==2}">
+              <div class="row sf_body_top">
+                <div class="col-md-12" *ngIf="isDataSaved || isErrorInDataSaved">
+                  <div class="alert alert-success" *ngIf="isDataSaved" role="alert">
+                    Contact has been successfully Created. <b>Wait!</b> You will be redirecting to Contact page in
+                    <b>{{timeinsec}}</b> seconds.
+                  </div>
+                  <div class="alert alert-danger" *ngIf="isErrorInDataSaved" role="alert">
+                    {{errorInDataSaved}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="fssainumber">Id Number</label>
+                    <input type="text" class="form-control" id="fssainumber" formControlName="fssainumber" name="fssainumber"
+                      placeholder="Enter Id Number">
+                    <div *ngIf="contactForm.controls['fssainumber'].invalid && (contactForm.controls['fssainumber'].dirty || contactForm.controls['fssainumber'].touched || submitted)">
+                      <div *ngIf="contactForm.controls['fssainumber'].errors.required" class="error">
+                        Id Number is required.
+                      </div>
+                      <div *ngIf="contactForm.controls['fssainumber'].errors.pattern" class="error">
+                          Please enter valid Id number.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="dueDate">Due Date</label>
+                    <input type="date" class="form-control" id="dueDate" name="dueDate" formControlName="dueDate"
+                      placeholder="Enter Id Number Due Date">
+                    <div *ngIf="contactForm.controls['dueDate'].invalid && (contactForm.controls['dueDate'].dirty || contactForm.controls['dueDate'].touched || submitted)">
+                      <div *ngIf="contactForm.controls['dueDate'].errors.required" class="error">
+                        Due date is required.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <button class="btn btn-primary sf-previous" style="margin-right:10px;" (click)="moveBack(1)"><span
+                    class="icon-navigate_before"></span> Previous</button>
+                <button class="btn btn-primary" id="saveContact" (click)="saveContact($event)">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div>

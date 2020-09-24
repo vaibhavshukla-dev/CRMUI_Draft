@@ -1,0 +1,222 @@
+<!--The content below is only a placeholder and can be replaced.
+<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+
+    <a class="navbar-brand" routerLink="/dashboard"><span>WhatsApp CRM</span></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="icon-menu"></span> Menu
+    </button>
+
+    <div class="collapse navbar-collapse" id="ftco-nav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/dashboard">Home</a></li>
+        <li class="nav-item"><a routerLink="/accounts" class="nav-link">Accounts</a></li>
+        <li class="nav-item"><a routerLink="/contacts" class="nav-link">Contacts</a></li>
+        <li class="nav-item active"><a routerLink="/loanapplications" class="nav-link">Requests</a></li>
+        <li class="nav-item"><a routerLink="/scripts" class="nav-link">Scripts</a></li>
+        <li class="nav-item"><a routerLink="/communicates" class="nav-link">Communicate</a></li>
+        <li class="nav-item cta"><a class="nav-link logout" (click)="logout($event)">
+            <span class="icon-sign-out"></span>Log Out</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Welcome {{loggedinUser | titlecase}}
+      </span>
+    </div>
+
+</nav>
+<!-- END nav -->
+<app-header></app-header>
+<div class="main-panel">
+  <div class="col-md-12">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/loanapplications">Request</a></li>
+      <li class="breadcrumb-item active">New</li>
+    </ol>
+  </div>
+
+  <div class="col-md-12">
+    <div class="card">
+      <div class="bootstrap-iso">
+        <form id="newOpportunity" [formGroup]="opportunityForm">
+          <div class="stepFormCont">
+            <div class="sf_header">
+              <ul id="progressbar">
+                <li [ngClass]="{'active': currentPage >= 1}">Select Type</li>
+                <li [ngClass]="{'active': currentPage >= 2}">Enter Address</li>
+                <li [ngClass]="{'active': currentPage >= 3}">Enter Type Details</li>
+              </ul>
+            </div>
+            <div class="sf_body" [ngClass]="{'current_active': currentPage == 1}">
+              <div class="row sf_body_top">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="account">Select Account</label>
+                    <select class="form-control" id="account" name="account" formControlName="account">
+                      <option value="">Select Account</option>
+                      <option *ngFor="let account of accounts" value="{{account.accountid}}">{{account.name}}</option>
+                    </select>
+                    <div *ngIf="opportunityForm.controls['account'].invalid && (opportunityForm.controls['account'].dirty || opportunityForm.controls['account'].touched || isSubmitted)">
+                        <div *ngIf="opportunityForm.controls['account'].errors.required" class="error">
+                          Please select Account.
+                        </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="type">Type</label>
+                    <select class="form-control" id="type" name="type" (change)="typeChange()" formControlName="type">
+                      <option value="">Select Type</option>
+                      <option value="Order">Order</option>
+                      <option value="Loan">Loan</option>
+                      <option value="Invoice">Invoice</option>
+                    </select>
+                    <div *ngIf="opportunityForm.controls['type'].invalid && (opportunityForm.controls['type'].dirty || opportunityForm.controls['type'].touched || isSubmitted)">
+                      <div *ngIf="opportunityForm.controls['type'].errors.required" class="error">
+                        Please select Type.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="contact">Select Contact</label>
+                    <select class="form-control" id="contact" name="contact" formControlName="contact">
+                      <option value="">Select Contact</option>
+                      <option *ngFor="let contact of contacts" value="{{contact.contactid}}">{{contact.Name}}</option>
+                    </select>
+                    <div *ngIf="opportunityForm.controls['contact'].invalid && (opportunityForm.controls['contact'].dirty || opportunityForm.controls['contact'].touched || isSubmitted)">
+                      <div *ngIf="opportunityForm.controls['contact'].errors.required" class="error">
+                        Please select Contact.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="subtype">Sub Type</label>
+                    <select class="form-control" id="subtype" name="subtype" #subtype>
+                      <option *ngFor="let subType of subTypesOfType" value="{{subType.value}}">{{subType.key}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <button class="btn btn-primary sf-previous" style="display:none;">Previous</button>
+                <button class="btn btn-primary sf-next" (click)="moveNext(2)">Next <span class="icon-navigate_next"></span></button>
+              </div>
+            </div>
+            <div class="sf_body" [ngClass]="{'current_active': currentPage == 2}">
+              <div class="row sf_body_top">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="curraddress">Current Address</label>
+                    <input type="text" class="form-control" id="curraddress" name="curraddress"
+                      placeholder="Flat no., area name and landmark" formControlName="curraddress">
+                      <div *ngIf="opportunityForm.controls['curraddress'].invalid && (opportunityForm.controls['curraddress'].dirty || opportunityForm.controls['curraddress'].touched || isSubmitted)">
+                        <div *ngIf="opportunityForm.controls['curraddress'].errors.required" class="error">
+                          Current address is required.
+                        </div>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="state">State</label>
+                    <select class="form-control" id="state" name="state" formControlName="state">
+                      <option value="">Select State</option>
+                      <option *ngFor="let state of states" value={{state.code}}>{{state.name}}</option>
+                    </select>
+                    <div *ngIf="opportunityForm.controls['state'].invalid && (opportunityForm.controls['state'].dirty || opportunityForm.controls['state'].touched || isSubmitted)">
+                      <div *ngIf="opportunityForm.controls['state'].errors.required" class="error">
+                        Please select State.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="city">City / Town</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="Enter city" formControlName="city" />
+                    <div *ngIf="opportunityForm.controls['city'].invalid && (opportunityForm.controls['city'].dirty || opportunityForm.controls['city'].touched || isSubmitted)">
+                      <div *ngIf="opportunityForm.controls['city'].errors.required" class="error">
+                        City is required.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="zipcode">Zip / Postal Code</label>
+                    <input type="text" class="form-control" id="zipcode" name="zipcode"
+                      placeholder="Enter Zip or Postal code" formControlName="zipcode"/>
+                    <div *ngIf="opportunityForm.controls['zipcode'].invalid && (opportunityForm.controls['zipcode'].dirty || opportunityForm.controls['zipcode'].touched || isSubmitted)">
+                      <div *ngIf="opportunityForm.controls['zipcode'].errors.required" class="error">
+                        Zipcode is required.
+                      </div>
+                      <div *ngIf="opportunityForm.controls['zipcode'].errors.pattern" class="error">
+                        Please enter a valid zipcode.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <button class="btn btn-primary sf-previous" (click)="moveBack(1)" style="margin-right:10px;"><span
+                    class="icon-navigate_before"></span> Previous</button>
+                <button class="btn btn-primary sf-next" (click)="moveNext(3)">Next <span class="icon-navigate_next"></span></button>
+              </div>
+            </div>
+            <div class="sf_body" [ngClass]="{'current_active': currentPage == 3}">
+              <div class="row sf_body_top">
+                <div class="col-md-12" *ngIf="isDataSaved || isErrorInDataSaved">
+                  <div class="alert alert-success" *ngIf="isDataSaved" role="alert">
+                    Request has been successfully Created. <b>Wait!</b> You will be redirecting to Request page
+                    in <b>{{timeinsec}}</b> seconds.
+                  </div>
+                  <div class="alert alert-danger" *ngIf="isErrorInDataSaved" role="alert">
+                    {{errorInDataSaved}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="subtype">Professional Type</label>
+                    <select class="form-control" id="proftype" name="proftype" formControlName="proftype">
+                      <option value="SA">Salaried</option>
+                      <option value="SE">Self employed</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="pan">PAN</label>
+                    <input type="text" class="form-control" id="pan" name="pan" placeholder="Enter PAN" formControlName="pan">
+                    <div *ngIf="opportunityForm.controls['pan'].invalid && (opportunityForm.controls['pan'].dirty || opportunityForm.controls['pan'].touched || isSubmitted)">
+                      <div *ngIf="opportunityForm.controls['pan'].errors.required" class="error">
+                        PAN number is required.
+                      </div>
+                      <div *ngIf="opportunityForm.controls['pan'].errors.pattern" class="error">
+                        Please enter a valid PAN number.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="loanamount">Loan Amount</label>
+                    <input type="text" class="form-control" id="loanamount" name="loanamount"
+                      placeholder="Enter loan amount" formControlName="loanamount">
+                      <div *ngIf="opportunityForm.controls['loanamount'].invalid && (opportunityForm.controls['loanamount'].dirty || opportunityForm.controls['loanamount'].touched || isSubmitted)">
+                        <div *ngIf="opportunityForm.controls['loanamount'].errors.required" class="error">
+                          Loan amount is required.
+                        </div>
+                        <div *ngIf="opportunityForm.controls['loanamount'].errors.pattern" class="error">
+                          Please enter a valid loan amount.
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div style="text-align: right;">
+                <button class="btn btn-primary sf-previous" (click)="moveBack(2)" style="margin-right:10px;"><span
+                    class="icon-navigate_before"></span> Previous</button>
+                <button class="btn btn-primary" id="saveOpportunity" (click)="saveOpportunity($event)">Save</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
