@@ -33,7 +33,6 @@ export class DashboardRespondedLastHourComponent implements OnInit {
   }
   
   startTimer(param) {
-    console.log('value is ' + param)
     this.interval = setInterval(() => {
       if(this.timeLeft < param) {
         this.timeLeft++;

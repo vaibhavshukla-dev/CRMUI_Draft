@@ -1,0 +1,56 @@
+<app-header></app-header>
+
+<div
+  class="container-fluid"
+  style="background-color: #f5f5f8; min-height: calc(100vh - 113px)"
+>
+  <div class="col-12">
+    <div class="row m-0">
+      <div class="head mt-3">
+        <h3 class="mb-0">
+          {{ title }}
+        </h3>
+      </div>
+
+      <div class="col-12 r-detail my-3">
+        <div class="table">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>Type</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Duration</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of requests; let i = index">
+              <td>
+                {{ i + 1 }}
+              </td>
+              <td>
+                {{ item.type }}
+              </td>
+              <td>
+                {{ item.date }}
+              </td>
+              <td>
+                {{ item.time }}
+              </td>
+              <td>
+                {{ item.duration }}
+              </td>
+              <td style="white-space: normal">
+                Contrary to popular belief, Lorem Ipsum is not simply random
+                text. It has roots in a piece of classical Latin literature from
+                45 BC, making it over 2000 years old. Lorem Ipsum is not simply
+                random text.
+              </td>
+            </tr>
+          </tbody>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

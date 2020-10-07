@@ -1,4 +1,6 @@
-
+.data{
+    width: 100%;
+}
 .card{
     position: relative;
     display: flex;
@@ -20,15 +22,17 @@
 
 .card .body .data .head{
     font-size: 15px;
-    margin-bottom: 30px;
     font-weight: 600;
 }
 
 .card .body .data .value{
     color: #495057;
     font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 }
 .card .body .avatar{
    position: relative;

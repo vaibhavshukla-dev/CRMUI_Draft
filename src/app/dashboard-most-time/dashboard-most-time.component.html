@@ -6,10 +6,10 @@
     <ngx-charts-bar-vertical class="d-none d-lg-block" [view]="view" [scheme]="colorScheme" [results]="single"
       [gradient]="gradient" [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showLegend"
       [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
-      [yAxisLabel]="yAxisLabel" [legendPosition]="legendPosition" [barPadding]="barPadding" [roundEdges]="roundEdges">
+      [yAxisLabel]="yAxisLabel" [legendPosition]="legendPosition" [barPadding]="barPadding" [roundEdges]="roundEdges" (select)="onSelect($event)">
     </ngx-charts-bar-vertical>
     <ngx-charts-pie-chart class="d-lg-none" [view]="view_mobile" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
-      [legend]="showLegend" [legendPosition]="legendPosition" >
+      [legend]="showLegend" [legendPosition]="legendPosition" (select)="onSelect($event)" >
     </ngx-charts-pie-chart>
   </div>
   <div class="foot">

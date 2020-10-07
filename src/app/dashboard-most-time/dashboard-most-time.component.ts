@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-most-time',
@@ -9,54 +10,67 @@ export class DashboardMostTimeComponent implements OnInit {
 
   single: any[] = [
     {
+      "id" : 1,
       "name": "Loan Origination",
       "value": 894
     },
     {
+      "id" : 2,
       "name": "Service Request",
       "value": 500
     },
     {
+      "id" : 3,
       "name": "Book a Ride",
       "value": 730
     },
     {
+      "id" : 4,
       "name": "Appointment Booking",
       "value": 510
     },
     {
+      "id" : 5,
       "name": "Enquiries",
       "value": 720
     },
     {
+      "id" : 6,
       "name": "TeleMedicine",
       "value": 900
     },
     {
+      "id" : 7,
       "name": "Doctor Request",
       "value": 900
     },
     {
+      "id" : 8,
       "name": "Renewal",
       "value": 800
     },
     {
+      "id" : 9,
       "name": "Live Chat",
       "value": 127
     },
     {
+      "id" : 10,
       "name": "Lab Reports",
       "value": 770
     },
     {
+      "id" : 11,
       "name": "Insurance",
       "value": 450
     },
     {
+      "id" : 12,
       "name": "Home Service",
       "value": 320
     },
     {
+      "id" : 13,
       "name": "Customer Care",
       "value": 670
     }
@@ -86,7 +100,7 @@ export class DashboardMostTimeComponent implements OnInit {
   @ViewChild('body') body; 
 
 
-  constructor() { }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
   }
@@ -94,4 +108,26 @@ export class DashboardMostTimeComponent implements OnInit {
     console.log(this.body.nativeElement.width);
   }
 
+  
+  onSelect(data: any): void {
+
+    var deptId: any;
+    
+    this.single.forEach(function (a) {
+      if(!data["name"]){
+        if (a.name == data) {
+          deptId = a.id;
+        }
+      }else{
+        if (a.name == data.name) {
+          deptId = a.id;
+        }
+      }
+     
+
+    });
+
+    this.router.navigate(['../ac-details' , {id: deptId}], { relativeTo: this.route });
+
+  }
 }

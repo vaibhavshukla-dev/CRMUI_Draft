@@ -8,7 +8,9 @@
         New Contacts
       </div>
       <div class="value">
-        {{timeLeft}}
+        <div class="timeLeft">
+          {{timeLeft}}
+        </div>
       </div>
     </div>
     <div class="avatar">
@@ -20,6 +22,6 @@
     </div>
   </div>
   <div class="foot">
-    <a routerLink="/dashboard/currentActiveContacts" [ngClass]="{'disabled':single == 0, 'card-link': true}">View Details</a>
+    <a routerLink="/contacts" [queryParams]="{ new: true }" [ngClass]="{'disabled':single == 0, 'card-link': true}">View Details</a>
   </div>
 </div>
