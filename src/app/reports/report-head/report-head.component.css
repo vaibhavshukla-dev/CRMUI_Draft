@@ -1,0 +1,90 @@
+.r-head{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #f6f6f6;
+    border-radius: 0;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+    padding: 20px;
+}
+
+.form-control{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .94rem + 2px);
+    padding: .47rem .75rem;
+    font-size: .8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    max-width: 200px;
+}
+
+.btn-apply{
+    background: #556ee6 !important;
+    color: #fff !important;
+    font-size: 13px;
+    height: 36px;
+}
+
+.form-item{
+    min-width: 200px;
+}
+.form-item label{
+    font-size: 13px;
+    font-weight: 500;
+}
+.form-item a{
+    font-size: 13px;
+    font-weight: 500;
+    color: #556ee6;
+    text-decoration: none;
+    margin-bottom: 0.5em;
+}
+
+
+.r-detail{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid #f6f6f6;
+    border-radius: 0;
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+    padding: 20px;
+}
+
+.table{
+    width: 100%;
+}
+
+.table tr th{
+    padding: 10px 20px 12px !important;
+    background: #556ee6;
+    color: #fff;
+    font-size: 16px;
+    font-weight: normal;
+    border: none;
+    white-space: nowrap;
+}
+
+.table tr td{
+    padding: 10px 20px 12px !important;
+    font-size: 14px;
+    font-weight: normal;
+    border: none;
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+}

@@ -1,0 +1,80 @@
+<div class="col-12 r-head">
+  <form [formGroup]="headerForm" (ngSubmit)="onSubmit(headerForm)" class="d-flex align-items-end">
+    <div class="form-item mr-3">
+      <label>Department</label>
+      <select class="form-control mr-3" id="" [(ngModel)]="department" name="headerData.department"
+        formControlName="department">
+        <option [value]="item.value" *ngFor="let item of departmentArray">{{item.value}}</option>
+      </select>
+    </div>
+    <div class="form-item mr-3">
+      <label>From Date</label>
+      <input [(ngModel)]="fromDate" type="date" class="form-control mr-3" name="headerData.fromDate"
+        formControlName="fromDate">
+    </div>
+    <div class="form-item mr-3">
+      <label>To Date</label>
+      <input [(ngModel)]="toDate" type="date" class="form-control mr-3" name="headerData.toDate"
+        formControlName="toDate">
+    </div>
+    <div class="form-item mr-3 d-flex flex-column">
+      <a href="javascript:void(0)" (click)="resetForm()">Reset</a>
+      <button type="submit" class="btn btn-apply">Apply Filter</button>
+    </div>
+
+
+  </form>
+</div>
+
+<div *ngIf="">Content to render when condition is true.</div>
+
+
+<div class="col-12 r-detail mt-3">
+  <div class="table">
+    <thead>
+      <tr>
+        <th>
+          Sr No
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+          Department
+        </th>
+        <th>
+          Contacted Date
+        </th>
+        <th>
+          Number of Minutes
+        </th>
+        <th>
+          Comments
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of renderArray; let i=index;">
+        <td>
+          {{i + 1}}
+        </td>
+        <td>
+          {{item.value}}
+        </td>
+        <td>
+          {{item.name}}
+        </td>
+        <td>
+          {{item.date}}
+        </td>
+        <td>
+          {{item.time}}
+        </td>
+        <td style="white-space: normal;">
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, 
+          making it over 2000 years old. Lorem Ipsum is not simply random text.
+        </td>
+      </tr>
+    </tbody>
+  </div>
+</div>
