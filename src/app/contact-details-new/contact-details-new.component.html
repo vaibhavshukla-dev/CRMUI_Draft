@@ -1,0 +1,113 @@
+<div class="col-md-12">   
+    <div class="edit-button" >
+        <button class="btn btn-primary" (click)="resetForm()" *ngIf="editMode" style="margin-right: 10px;">Cancel</button>
+        <button class="btn btn-primary" (click)="editForm()" *ngIf="editMode === false">Edit</button>
+        <button class="btn btn-primary" *ngIf="editMode" (click)="updateContact()">Save</button>
+    </div>
+  
+</div>
+<div class="bootstrap-iso">
+  <div class="col-md-12">
+    <div class="card">
+      <form method="post" [formGroup]="contactForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="alert alert-success" *ngIf="isDataSaved" role="alert">
+            Contact has been successfully Updated.
+            </div>
+            <div class="alert alert-danger" *ngIf="isErrorInDataSaved" role="alert">
+              {{errorInDataSaved}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group ">
+              <label class="control-label " for="contactid">Contact Id</label>
+              <input class="form-control" id="contactid" name="contactid" type="text"
+                formControlName="contactid" readonly="readonly" />
+            </div>
+            <div class="form-group ">
+              <label class="control-label " for="name">Name</label>
+              <input class="form-control" id="name" name="name" type="text" formControlName="name"
+                [readonly]="!editMode" />
+                <div *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched || submitted)">
+                    <div *ngIf="contactForm.controls['name'].errors.required" class="error">
+                      Name is required.
+                    </div>
+                </div>
+            </div>
+            <div class="form-group ">
+              <label class="control-label requiredField" for="email">Email</label>
+              <input class="form-control" id="email" name="email" type="text" formControlName="email"
+                [readonly]="!editMode" />
+                <div *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched || submitted)">
+                    <div *ngIf="contactForm.controls['email'].errors.required" class="error">
+                      Email is required.
+                    </div>
+                    <div *ngIf="contactForm.controls['email'].errors.pattern" class="error">
+                        Enter valid Email address.
+                      </div>
+                </div>
+            </div>
+            <div class="form-group ">
+              <label class="control-label requiredField" for="fssainumber">Id Number</label>
+              <input class="form-control" id="fssainumber" name="fssainumber" type="text" formControlName="fssainumber"
+                [readonly]="!editMode" />
+                <div *ngIf="contactForm.controls['fssainumber'].invalid && (contactForm.controls['fssainumber'].dirty || contactForm.controls['fssainumber'].touched || submitted)">
+                    <div *ngIf="contactForm.controls['fssainumber'].errors.required" class="error">
+                      Id number is required.
+                    </div>
+                    <div *ngIf="contactForm.controls['fssainumber'].errors.pattern" class="error">
+                        Enter valid Id number.
+                      </div>
+                </div>
+            </div>
+            <div class="form-group ">
+              <label class="control-label requiredField" for="Type">Type</label>
+              <input class="form-control" id="contacttype" name="contacttype" type="text" formControlName="contacttype"
+                [readonly]="!editMode" />
+                <div *ngIf="contactForm.controls['contacttype'].invalid && (contactForm.controls['contacttype'].dirty || contactForm.controls['contacttype'].touched || submitted)">
+                    <div *ngIf="contactForm.controls['contacttype'].errors.required" class="error">
+                      Contact type is required.
+                    </div>
+                    <div *ngIf="contactForm.controls['contacttype'].errors.pattern" class="error">
+                        Enter valid Contact Type DOCTOR/PATIENT.
+                      </div>
+                </div>
+            </div>
+          </div>
+          <div class="col-md-6">              
+            <div class="form-group ">
+              <label class="control-label " for="mobile">Registered Mobile Number</label>
+              <input class="form-control" id="mobile" name="mobile" type="text" formControlName="mobile" readonly="readonly" />
+            </div>
+            <div class="form-group ">
+                <label class="control-label " for="accountid">Account Name</label>
+                <input class="form-control" id="accountid" name="accountid" type="text"
+                  formControlName="accountid" readonly="readonly" />
+            </div>
+            <div class="form-group ">
+              <label class="control-label requiredField" for="dob">Date Of Birth</label>
+              <input class="form-control" id="dob" name="dob" type="date" formControlName="dob"
+                [readonly]="!editMode" />
+                <div *ngIf="contactForm.controls['dob'].invalid && (contactForm.controls['dob'].dirty || contactForm.controls['dob'].touched || submitted)">
+                    <div *ngIf="contactForm.controls['dob'].errors.required" class="error">
+                      Date of Birth is required.
+                    </div>
+                </div>
+            </div>              
+            <div class="form-group ">
+              <label class="control-label " for="dueDate">Due Date</label>
+              <input class="form-control" id="dueDate" name="dueDate" type="date"
+                formControlName="dueDate" [readonly]="!editMode" />
+                <div *ngIf="contactForm.controls['dueDate'].invalid && (contactForm.controls['dueDate'].dirty || contactForm.controls['dueDate'].touched || submitted)">
+                    <div *ngIf="contactForm.controls['dueDate'].errors.required" class="error">
+                      Due date is required.
+                    </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
