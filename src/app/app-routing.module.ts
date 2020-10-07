@@ -20,6 +20,10 @@ import { CommunicateNewComponent } from './communicate-new/communicate-new.compo
 import { OpportunityDetailsComponent } from './opportunity-details/opportunity-details.component';
 import { AccountNewComponent } from './account-new/account-new.component';
 import { AccountDetailsComponent } from './account-details/account-details.component';
+import { ReportComponent } from './reports/report/report.component';
+import { AcDetailsComponent } from './dashboard-all-conversation/ac-details/ac-details.component';
+import { ContactDetailsNewComponent } from './contact-details-new/contact-details-new.component';
+import { ContactInformationComponent } from './contact-information/contact-information.component';
 
 
 const routes: Routes = [
@@ -28,7 +32,7 @@ const routes: Routes = [
   { path: 'login', component: HomeComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsComponent, canActivate: [AuthGuard] },
-  { path: 'contact/:id', component: ContactDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'contact/:id', component: ContactInformationComponent, canActivate: [AuthGuard] },
   { path: 'accounts', component: AccountsComponent, canActivate: [AuthGuard] },
   { path: 'loanapplications', component: LoanApplicationComponent, canActivate: [AuthGuard] },
   { path: 'scripts', component: ScriptsComponent, canActivate: [AuthGuard] },
@@ -41,7 +45,10 @@ const routes: Routes = [
   { path: 'newcommunicate', component: CommunicateNewComponent, canActivate: [AuthGuard] },
   { path: 'opportunity/:id', component: OpportunityDetailsComponent, canActivate: [AuthGuard] },
   { path: 'newaccount', component: AccountNewComponent, canActivate: [AuthGuard] },
-  { path: 'account/:id', component: AccountDetailsComponent, canActivate: [AuthGuard] }
+  { path: 'account/:id', component: AccountDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'reports', component: ReportComponent, canActivate: [AuthGuard] },
+  { path: 'ac-details', component: AcDetailsComponent, canActivate: [AuthGuard] },
+
 ];
 
 @NgModule({

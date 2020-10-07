@@ -42,6 +42,15 @@ import { DashboardMostTimeComponent } from './dashboard-most-time/dashboard-most
 import { DashboardActiveRequestComponent } from './dashboard-active-request/dashboard-active-request.component';
 import { DashboardAllConversationComponent } from './dashboard-all-conversation/dashboard-all-conversation.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { ReportComponent } from './reports/report/report.component';
+import { ReportHeadComponent } from './reports/report-head/report-head.component';
+import { ReportDetailComponent } from './reports/report-detail/report-detail.component';
+import { AcDetailsComponent } from './dashboard-all-conversation/ac-details/ac-details.component';
+import { ContactDetailsNewComponent } from './contact-details-new/contact-details-new.component';
+import { RelatedRequestsComponent } from './related-requests/related-requests.component';
+import { InboundOutboundConversationsComponent } from './inbound-outbound-conversations/inbound-outbound-conversations.component';
+import { ContactInformationComponent } from './contact-information/contact-information.component';
+import {MatTabsModule} from '@angular/material/tabs';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -76,7 +85,15 @@ export function tokenGetter() {
     DashboardMostTimeComponent,
     DashboardActiveRequestComponent,
     DashboardAllConversationComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    ReportComponent,
+    ReportHeadComponent,
+    ReportDetailComponent,
+    AcDetailsComponent,
+    ContactDetailsNewComponent,
+    RelatedRequestsComponent,
+    InboundOutboundConversationsComponent,
+    ContactInformationComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +110,8 @@ export function tokenGetter() {
     StatesModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     NgxChartsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTabsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
