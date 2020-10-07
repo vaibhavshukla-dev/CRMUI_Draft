@@ -1,0 +1,61 @@
+
+/* Style the tab */
+.tab {
+    /* width: 32%; */
+    overflow: hidden;
+    display: flex;
+    justify-content: space-evenly;
+    height: 30px;
+  }
+
+  .tablinks{
+      width: 100px;
+      
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    border: 1px solid white;
+    box-shadow: 0px 0px 2px 0px white;
+    background: #556ee6;
+    box-sizing: border-box;
+    color: white;
+  }
+  
+  /* Create an active/current tablink class */
+  :host >>> .tab button.active {
+    background-color: #556ee6;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: block;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+:host >>> .mat-tab-body-wrapper{
+    padding: 10px 0px;
+}
+.tab-container{
+    padding: 0px 25px;
+}
+
+:host >>> .mat-tab-label-active {
+    background-color: #e9ecef;
+}
+:host >>> .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background-color: #556ee6;
+} 

@@ -1,0 +1,63 @@
+<div class="col-md-12">
+  <div class="card">
+    <h3>Related Inbound & Outbound Conversation</h3>
+    <div class="conversation-head">
+      <div class="left-conv">Received from {{receivedFrom}}</div>
+      <div class="right-conv">Sent from {{sentFrom}}</div>
+    </div>
+    <div class="msg_history">
+      <div *ngFor="let conversationList of conversations">
+        <div
+          [ngClass]="{'incoming_msg' : msgObj['SMS Status'] == 'received', 'outgoing_msg':  msgObj['SMS Status'] == 'queued'}"
+          *ngFor="let msgObj of conversationList">
+          <div class="incoming_msg_img" *ngIf="msgObj['SMS Status'] == 'received'">
+            <img src="../assets/images/msg_icon.png" />
+          </div>
+          <div
+            [ngClass]="{'received_msg' : msgObj['SMS Status'] == 'received', 'sent_msg':  msgObj['SMS Status'] == 'queued'}">
+            <div [ngClass]="{'received_withd_msg' : msgObj['SMS Status'] == 'received'}">
+              <p>
+                {{msgObj['SMS Body']}}<br/>
+                <span *ngIf="msgObj['msgmediaurl']!=null"> 
+                  <a href="{{msgObj['msgmediaurl']}}" target="_blank">Get the attached document</a>
+                </span>
+              </p>
+              <span class="time_date">
+                <span class="glyphicon glyphicon-time"></span> {{ msgObj.created_at | date:"MM/dd/yyyy 'at' h:mm a"}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-12">
+  <div class="card">
+    <h3>Bulk Communication</h3>
+    <div class="conversation-head">
+      <div class="left-conv">Received from {{receivedFrom}}</div>
+      <div class="right-conv">Sent from {{sentFrom}}</div>
+    </div>
+    <div class="msg_history">
+      <div
+        [ngClass]="{'incoming_msg' : msgObj['sms_status'] == 'received', 'outgoing_msg':  msgObj['sms_status'] == 'queued'}"
+        *ngFor="let msgObj of communicateconversations">
+        <div class="incoming_msg_img" *ngIf="msgObj['sms_status'] == 'received'">
+          <img src="../assets/images/msg_icon.png" />
+        </div>
+        <div
+          [ngClass]="{'received_msg' : msgObj['sms_status'] == 'received', 'sent_msg':  msgObj['sms_status'] == 'queued'}">
+          <div [ngClass]="{'received_withd_msg' : msgObj['sms_status'] == 'received'}">
+            <p>{{msgObj['sms_body']}}</p>
+            <span class="time_date">
+              <span class="glyphicon glyphicon-time"></span> {{ msgObj.created_at | date:"MM/dd/yyyy 'at' h:mm a"}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

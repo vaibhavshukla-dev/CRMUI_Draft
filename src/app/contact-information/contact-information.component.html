@@ -1,0 +1,14 @@
+<app-header></app-header>
+<div class="tab-container ">
+  <mat-tab-group [@.disabled]="true"  (selectedTabChange)="onTabChanged($event);" [disableRipple]="true">
+      <mat-tab label="Customers Details">
+         <app-contact-details-new></app-contact-details-new>
+      </mat-tab>
+      <mat-tab label="Related Requests">
+          <app-related-requests  *ngIf = "this.tabName == 'Related Requests'"></app-related-requests>
+      </mat-tab>
+      <mat-tab label="Related Inbound & Outbound Conversation">
+        <app-inbound-outbound-conversations *ngIf = "this.tabName == 'Related Inbound & Outbound Conversation'"></app-inbound-outbound-conversations>
+      </mat-tab>
+  </mat-tab-group>
+</div>
