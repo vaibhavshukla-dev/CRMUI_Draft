@@ -46,27 +46,52 @@
 <nav class="navbar navbar-expand-lg" id="ftco-navbar">
   <!--div class="container"-->
   <div class="collapse navbar-collapse" id="ftco-nav">
+
+    <!-- <div *ngIf="isAdmin else notAdmin">
+      <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" routerLink="/dashboard"><span class="material-icons">
+              dashboard
+            </span>Home</a></li>
+        <li class="nav-item"><a routerLink="/accounts" class="nav-link"><span class="material-icons">
+              receipt
+            </span>Accounts</a></li>
+        <li class="nav-item"><a routerLink="/contacts" class="nav-link"><span class="material-icons">
+              contacts
+            </span>Contacts</a></li>
+        <li class="nav-item"><a routerLink="/loanapplications" class="nav-link"><span class="material-icons">
+              move_to_inbox
+            </span>Requests</a></li>
+        <li class="nav-item"><a routerLink="/scripts" class="nav-link"><span class="material-icons">
+              wysiwyg
+            </span>Scripts</a></li>
+        <li class="nav-item"><a routerLink="/communicates" class="nav-link"><span class="material-icons">
+              textsms
+            </span>Communicate</a></li>
+        <li class="nav-item"><a routerLink="/reports" class="nav-link"><span class="material-icons">
+              assessment
+            </span>Reports</a></li>
+      </ul>
+    </div>
+    <ng-template #notAdmin>
+      <ul class="navbar-nav">
+        <li class="nav-item active"><a class="nav-link" routerLink="/dashboard"><span class="material-icons">
+              dashboard
+            </span>Home</a></li>     
+      </ul>
+    </ng-template> -->
+
     <ul class="navbar-nav">
-      <li class="nav-item active"><a class="nav-link" routerLink="/dashboard"><span class="material-icons">
-            dashboard
-          </span>Home</a></li>
-      <li class="nav-item"><a routerLink="/accounts" class="nav-link"><span class="material-icons">
-        receipt
-        </span>Accounts</a></li>
-      <li class="nav-item"><a routerLink="/contacts" class="nav-link"><span class="material-icons">
-        contacts
-        </span>Contacts</a></li>
-      <li class="nav-item"><a routerLink="/loanapplications" class="nav-link"><span class="material-icons">
-        move_to_inbox
-        </span>Requests</a></li>
-      <li class="nav-item"><a routerLink="/scripts" class="nav-link"><span class="material-icons">
-        wysiwyg
-        </span>Scripts</a></li>
-      <li class="nav-item"><a routerLink="/communicates" class="nav-link"><span class="material-icons">
-        textsms
-        </span>Communicate</a></li>
+      <li class="nav-item active" *ngFor="let nav of navArray">
+        <a class="nav-link" routerLink="{{nav.url}}" *ngIf="nav.type == 1">
+          <span class="material-icons">{{nav.icon}}</span>{{nav.title}}
+        </a>
+      </li>
     </ul>
   </div>
   <!--/div -->
 </nav>
+
+
+
+
 <!-- END nav -->
