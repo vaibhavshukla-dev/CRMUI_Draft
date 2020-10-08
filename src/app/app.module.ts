@@ -51,6 +51,7 @@ import { RelatedRequestsComponent } from './related-requests/related-requests.co
 import { InboundOutboundConversationsComponent } from './inbound-outbound-conversations/inbound-outbound-conversations.component';
 import { ContactInformationComponent } from './contact-information/contact-information.component';
 import {MatTabsModule} from '@angular/material/tabs';
+import { MappertestComponent } from './mappertest/mappertest.component';
 
 export function tokenGetter() {
   return localStorage.getItem('access_token');
@@ -93,7 +94,8 @@ export function tokenGetter() {
     ContactDetailsNewComponent,
     RelatedRequestsComponent,
     InboundOutboundConversationsComponent,
-    ContactInformationComponent
+    ContactInformationComponent,
+    MappertestComponent
   ],
   imports: [
     BrowserModule,

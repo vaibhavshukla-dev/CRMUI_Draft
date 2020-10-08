@@ -23,7 +23,9 @@ export class HeaderComponent implements OnInit {
     { title: "Requests", url: "/loanapplications", type: "1", icon: " move_to_inbox"},
     { title: "Scripts", url: "/scripts", type: "1", icon: "wysiwyg"},
     { title: "Communicate", url: "/communicates", type: "1", icon: "textsms"},
-    { title: "Reports", url: "/reports", type: "1", icon: "assessment"}
+    { title: "Reports", url: "/reports", type: "1", icon: "assessment"},
+    { title: "Data Mapping", url: "/mappertest", type: "1", icon: "keyboard_hide"}
+
   ];
 
   ngOnInit() {
